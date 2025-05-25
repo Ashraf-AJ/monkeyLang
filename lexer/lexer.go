@@ -20,17 +20,16 @@ func (l *Lexer) readChar() {
 	if l.readPosition >= len(l.input) {
 		// ascii code for NUL
 		l.ch = 0
-		return
+	} else {
+		l.ch = l.input[l.readPosition]
 	}
-
-	l.ch = l.input[l.readPosition]
 
 	l.position = l.readPosition
 	l.readPosition += 1
 }
 
 func (l *Lexer) peekChar() byte {
-	if l.readPosition > len(l.input) {
+	if l.readPosition >= len(l.input) {
 		return 0
 	}
 	return l.input[l.readPosition]
