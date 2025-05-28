@@ -28,8 +28,8 @@ const (
 
 	LPAREN = "("
 	RPAREN = ")"
-	LBRACE = "["
-	RBRACE = "]"
+	LBRACE = "{"
+	RBRACE = "}"
 
 	// Keywords
 	FUNCTION = "FUNCTION"
