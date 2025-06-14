@@ -49,3 +49,23 @@ type Error struct {
 
 func (e *Error) Type() ObjectType { return ERROR_OBJ }
 func (e *Error) Inspect() string  { return "ERROR: " + e.Message }
+
+type Environment struct {
+	store map[string]Object
+}
+
+func NewEnvironment() *Environment {
+	return &Environment{
+		store: make(map[string]Object),
+	}
+}
+
+func (e *Environment) Set(k string, v Object) Object {
+	e.store[k] = v
+	return v
+}
+
+func (e *Environment) Get(k string) (Object, bool) {
+	value, ok := e.store[k]
+	return value, ok
+}
