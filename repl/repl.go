@@ -14,7 +14,7 @@ const PROMPT = ">> "
 
 func Start(in io.Reader, out io.Writer) {
 	scanner := bufio.NewScanner(in)
-	env := object.NewEnvironment()
+	env := object.NewEnclosedEnvironment(evaluator.InitBuiltins())
 
 	for {
 		fmt.Fprint(out, PROMPT)
