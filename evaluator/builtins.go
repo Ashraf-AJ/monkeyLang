@@ -1,6 +1,9 @@
 package evaluator
 
-import "monkeylang/object"
+import (
+	"fmt"
+	"monkeylang/object"
+)
 
 func InitBuiltins() *object.Environment {
 	builtins := object.NewEnvironment()
@@ -114,6 +117,16 @@ func InitBuiltins() *object.Environment {
 
 			return &object.Array{Elements: newElements}
 
+		},
+	})
+
+	builtins.Set("puts", &object.Builtin{
+		Fn: func(args ...object.Object) object.Object {
+			for _, arg := range args {
+				fmt.Println(arg.Inspect())
+			}
+
+			return NULL
 		},
 	})
 
